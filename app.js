@@ -29,7 +29,7 @@ app.use(fileUpload())
 app.post('/new-demo', async (req, res) => {
     log(req.files.photo)
     let file = req.files.photo
-    file.mv(path.join(__dirname,'../','/images/passport.png'), async(err) => {
+    file.mv(path.join(__dirname,'../../','/images/passport.png'), async(err) => {
         if (err) {
             res.send({ error: err })
         } else {
