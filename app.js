@@ -10,6 +10,7 @@ import querystring from 'querystring';
 import OpticalCharacterRecognition from "@nanonets/optical-character-recognition";
 import cors from 'cors'
 import fileUpload from 'express-fileupload';
+import path from 'path';
 
 // const nanonets = require('nanonets')('cea98485-9bd1-11ee-b5b3-a630e16cc42c')
 
@@ -18,6 +19,7 @@ const app = express()
 app.use(express.static('images'))
 app.use(cors())
 app.use(fileUpload())
+
 
 
 // const url = "https://app.nanonets.com/api/v2/OCR/Model/71a1422d-1268-4df5-9722-a8647bc1e8e2/LabelFile/";
@@ -121,7 +123,7 @@ app.use(fileUpload())
 app.post('/new-demo', async (req, res) => {
     log(req.files.photo)
     let file = req.files.photo
-    file.mv('images/passport.png', async(err) => {
+    file.mv(path.join(__dirname,'/images/passport.png'), async(err) => {
         if (err) {
             res.send({ error: err })
         } else {
