@@ -36,7 +36,7 @@ app.post('/new-demo', async (req, res) => {
             const ocr = new OpticalCharacterRecognition("cea98485-9bd1-11ee-b5b3-a630e16cc42c", "71a1422d-1268-4df5-9722-a8647bc1e8e2");
             // let d = await ocr.getModelDetails();
             // let a = await ocr.getAllPredictedFileData(startInterval, endInterval);
-            let resp = await ocr.predictUsingFile("images/passport.png", false);
+            let resp = await ocr.predictUsingFile(path.join(__dirname,'../../','/images/passport.png'), false);
             res.send(resp)
         }
     })
